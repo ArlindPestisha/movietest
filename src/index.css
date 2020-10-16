@@ -1,9 +1,11 @@
-*{
+/* Universal selector (*) which selects all HTML elements on the page */ 
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* Section with element selectors */
 body {
   font-family: monospace, sans-serif;
   background-color: salmon;
