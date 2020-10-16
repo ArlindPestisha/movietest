@@ -1,5 +1,7 @@
 import React from 'react';
 
+// Below all the imports for Components
+
 const App = () => {
   return (
     <div className="App">
