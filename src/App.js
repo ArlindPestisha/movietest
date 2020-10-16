@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios'
 
 // Below all the imports for Components
 import Search from './components/Search';
@@ -16,7 +17,18 @@ const App = () => {
   });
 
   // API from omdbapi with a personal API KEY to use
-  const apiurl = "http://www.omdbapi.com/?apikey=13869b4";
+  const apiurl = " http://www.omdbapi.com/?apikey=13869b4";
+
+  //Function for the search
+  const search = (e) => {
+    //Here I am using a conditional statement and also I am listen for the key
+    if (e.key === 'Enter') {
+      axios(apiurl + '&s=' + state.s).then(({data}) => {
+        console.log(data)
+      })
+    }
+
+  }
 
   const handleInput = (e) => {
     let s = e.target.value
@@ -32,7 +44,10 @@ const App = () => {
         <h1>Find your Movie</h1>
       </header>
       <main>
-        <Search handleInput={handleInput} />
+        <Search 
+          handleInput={handleInput}
+          search={search} 
+        />
       </main>
     </div>
   );
