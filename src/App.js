@@ -3,6 +3,7 @@ import axios from 'axios'
 
 // Below all the imports for Components
 import Search from './components/Search';
+import Results from './components/Results';
 
 const App = () => {
 
@@ -51,6 +52,7 @@ const App = () => {
           handleInput={handleInput}
           search={search} 
         />
+        <Results results={state.results} />
       </main>
     </div>
   );
