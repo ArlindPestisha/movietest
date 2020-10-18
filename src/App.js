@@ -24,10 +24,13 @@ const App = () => {
     //Here I am using a conditional statement and also I am listen for the key
     if (e.key === 'Enter') {
       axios(apiurl + '&s=' + state.s).then(({ data }) => {
-        console.log(data)
+        let results = data.Search
+
+        setState(prevState => {
+          return{...prevState, results: results}
+        })
       })
     }
-
   }
 
   const handleInput = (e) => {
