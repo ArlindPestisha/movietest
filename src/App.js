@@ -23,7 +23,7 @@ const App = () => {
   const search = (e) => {
     //Here I am using a conditional statement and also I am listen for the key
     if (e.key === 'Enter') {
-      axios(apiurl + '&s=' + state.s).then(({data}) => {
+      axios(apiurl + '&s=' + state.s).then(({ data }) => {
         console.log(data)
       })
     }

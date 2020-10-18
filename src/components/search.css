@@ -1,0 +1,22 @@
+/* Section for className selectors */
+.searchbox {
+    background-color: white;
+    border-radius: 10px;
+  
+    border: none;
+    outline: none;
+  
+    color: salmon;
+    font-size: 20px;
+    font-weight: 400;
+  
+    display: block;
+    padding: 15px;
+    width: 100%;
+  
+    transition: 0.4s ease-out;
+  }
+  
+  .searchbox:focus {
+    box-shadow: 0px 0px 8px 3px #4484c4;
+  }

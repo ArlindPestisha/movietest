@@ -1,12 +1,13 @@
 import React from 'react'
+import './search.css'
 
 const Search = ({ handleInput, search }) => {
     return (
         <section className="searchbox-wrap">
             <input
+                className="searchbox"
                 type="text" 
                 placeholder="Search your movie..."
-                className="searchbox" 
                 onChange={handleInput}
                 onKeyPress={search}
             />
