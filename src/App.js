@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import axios from 'axios'
 
 // Below all the imports for Components
-import Search from './components/Search';
-import Results from './components/Results';
-import InfoMovie from './components/InfoMovie';
+import Search from './components/Search/Search';
+import Results from './components/Results/Results';
+import InfoMovie from './components/InfoMovie/InfoMovie';
 
 const App = () => {
 

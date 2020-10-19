@@ -1,5 +1,6 @@
 import React from 'react'
 import Result from './Result'
+import './results.css'
 
 const Results = ({ results, openMovie }) => {
     return (

@@ -1,0 +1,36 @@
+/* Section for className selectors */
+.results {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0px -15px;
+  }
+  
+  .results .result {
+    cursor: pointer;
+    flex-direction: column;
+    display: flex;
+    padding: 15px;
+    min-width: 250px;
+    width: 33.3333%;
+  }
+  
+  .results .result img {
+    display: block;
+    width: 100%;
+  }
+  
+  .results .result h3 {
+    text-align: center;
+    background: honeydew;
+    color: burlywood;
+    font-weight: 600;
+    font-size: 20px;
+    padding: 10px;
+    flex: 1 1 100%;
+    transition: 0.5 ease-out;
+  }
+  
+  .results .result:hover h3 {
+    background: rgb(37, 133, 133);
+    color: rgb(113, 51, 133);
+  }
