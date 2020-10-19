@@ -73,7 +73,7 @@ const closeMovie = () => {
           search={search} 
         />
 
-        <Results results={state.results} />
+        <Results results={state.results} openMovie={openMovie} />
 
         {(typeof state.selected.Title != "undefined") ? <InfoMovie selected={state.selected} closeMovie={closeMovie} /> : false}
       </main>
