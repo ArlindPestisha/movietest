@@ -4,6 +4,7 @@ import axios from 'axios'
 // Below all the imports for Components
 import Search from './components/Search';
 import Results from './components/Results';
+import InfoMovie from './components/InfoMovie';
 
 const App = () => {
 
@@ -25,23 +26,42 @@ const App = () => {
     //Here I am using a conditional statement and also I am listen for the key
     if (e.key === 'Enter') {
       axios(apiurl + '&s=' + state.s).then(({ data }) => {
-        let results = data.Search
+        let results = data.Search;
 
         setState(prevState => {
           return{...prevState, results: results}
-        })
-      })
-    }
-  }
+        });
+      });
+    };
+  };
 
+  //Function to handel the input in the search box
   const handleInput = (e) => {
     let s = e.target.value
 
     setState(prevState => {
       return {...prevState, s: s}
     });
-    console.log(state.s)
   };
+
+//Function for the movie when it is clicked to get more info for that specific movie
+const openMovie = id => {
+  axios(apiurl + '&i=' + id).then(({ data }) => {
+    let result = data;
+
+    setState(prevState => {
+      return { ...prevState, selected: result }
+    });
+  });
+};
+
+//Function to close the Movie page info and to get back to the home page
+const closeMovie = () => {
+  setState(prevState => {
+    return { ...prevState, selected: {} }
+  });
+};
+
   return (
     <div className="App">
       <header>
@@ -52,10 +72,13 @@ const App = () => {
           handleInput={handleInput}
           search={search} 
         />
+
         <Results results={state.results} />
+
+        {(typeof state.selected.Title != "undefined") ? <InfoMovie selected={state.selected} closeMovie={closeMovie} /> : false}
       </main>
     </div>
   );
-}
+};
 
 export default App;
