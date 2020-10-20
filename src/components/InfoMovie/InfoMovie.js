@@ -1,7 +1,7 @@
 import React from 'react'
 import './infoMovie.css'
 
-const InfoMovie = ({ selected, closeMovie }) => {
+const InfoMovie = ({ selected, onCloseMovie }) => {
     return (
         <section className="info">
             <div className="content">
@@ -11,7 +11,7 @@ const InfoMovie = ({ selected, closeMovie }) => {
                     <img src={selected.Poster} alt="" />
                     <p>{selected.Plot}</p>
                 </div>
-                <button className="close" onClick={closeMovie}>Close</button>
+                <button className="close" onClick={onCloseMovie}>Close</button>
             </div>
         </section>
     )
