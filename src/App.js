@@ -19,7 +19,7 @@ const App = () => {
   });
 
   // API from omdbapi with a personal API KEY to use
-  const apiurl = " http://www.omdbapi.com/?apikey=13869b4";
+  const apiurl = "http://www.omdbapi.com/?apikey=13869b4";
 
   //Function for the search
   const search = (e) => {

@@ -1,6 +1,6 @@
 import React from 'react'
 import { render, fireEvent } from '@testing-library/react'
-import Search from './components/Search'
+import Search from './components/Search/Search'
 
 it('renders correctly', () => {
     const { queryByPlaceholderText } = render(<Search />)
@@ -13,8 +13,8 @@ describe("Input value", () => {
         const {queryByPlaceholderText} = render(<Search />)
         const searchInput = queryByPlaceholderText("Search your movie...")
         
-        fireEvent.change(searchInput, {target: {value: ""}})
+        fireEvent.change(searchInput, {target: {value: "test"}})
 
-        expect(searchInput.value).toBe('')
+        expect(searchInput.value).toBe('test')
     });
 })
