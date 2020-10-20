@@ -45,7 +45,7 @@ const App = () => {
   };
 
 //Function for the movie when it is clicked to get more info for that specific movie
-const openMovie = id => {
+const onOpenMovie = id => {
   axios(apiurl + '&i=' + id).then(({ data }) => {
     let result = data;
 
@@ -56,7 +56,7 @@ const openMovie = id => {
 };
 
 //Function to close the Movie page info and to get back to the home page
-const closeMovie = () => {
+const onCloseMovie = () => {
   setState(prevState => {
     return { ...prevState, selected: {} }
   });
@@ -73,9 +73,9 @@ const closeMovie = () => {
           search={search} 
         />
 
-        <Results results={state.results} openMovie={openMovie} />
+        <Results results={state.results} onOpenMovie={onOpenMovie} />
 
-        {(typeof state.selected.Title != "undefined") ? <InfoMovie selected={state.selected} closeMovie={closeMovie} /> : false}
+        {(typeof state.selected.Title != "undefined") ? <InfoMovie selected={state.selected} onCloseMovie={onCloseMovie} /> : false}
       </main>
     </div>
   );
