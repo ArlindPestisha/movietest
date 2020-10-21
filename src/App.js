@@ -7,7 +7,7 @@ import Results from './components/Results/Results';
 import InfoMovie from './components/InfoMovie/InfoMovie';
 
 const App = () => {
-
+//console.log(process.env.REACT_APP_MOVIE_API_KEY)
   // Using Hooks to set the state
   const [state, setState] = useState({
     // s is for search
@@ -19,7 +19,7 @@ const App = () => {
   });
 
   // API from omdbapi with a personal API KEY to use
-  const apiurl = "http://www.omdbapi.com/?apikey=13869b4";
+  const apiurl = `http://www.omdbapi.com/?apikey=${process.env.REACT_APP_MOVIE_API_KEY}`;
 
   //Function for the search
   const search = (e) => {
