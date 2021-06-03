@@ -2,6 +2,7 @@ import React from 'react'
 import './infoMovie.css'
 
 const InfoMovie = ({ selected, onCloseMovie }) => {
+    console.log('you')
     return (
         <section className="info">
             <div className="content">

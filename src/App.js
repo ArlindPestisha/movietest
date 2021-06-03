@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
-import axios from 'axios'
+import React, { useState } from "react";
+import axios from "axios";
 
 // Below all the imports for Components
-import Search from './components/Search/Search';
-import Results from './components/Results/Results';
-import InfoMovie from './components/InfoMovie/InfoMovie';
+import Search from "./components/Search/Search";
+import Results from "./components/Results/Results";
+import InfoMovie from "./components/InfoMovie/InfoMovie";
 
 const App = () => {
-//console.log(process.env.REACT_APP_MOVIE_API_KEY)
+  //console.log(process.env.REACT_APP_MOVIE_API_KEY)
   // Using Hooks to set the state
   const [state, setState] = useState({
     // s is for search
@@ -15,52 +15,52 @@ const App = () => {
     // results is after we search and we render to the UI
     results: [],
     // selected is after we click to the film Poster to give use Info for the film
-    selected: {}
+    selected: {},
   });
 
   // API from omdbapi with a personal API KEY to use
-  const apiurl = `http://www.omdbapi.com/?apikey=${process.env.REACT_APP_MOVIE_API_KEY}`;
+  const apiurl = `http://www.omdbapi.com/?apikey=13869b4`;
 
   //Function for the search
   const search = (e) => {
     //Here I am using a conditional statement and also I am listen for the key
-    if (e.key === 'Enter') {
-      axios(apiurl + '&s=' + state.s).then(({ data }) => {
+    if (e.key === "Enter") {
+      axios(apiurl + "&s=" + state.s).then(({ data }) => {
         let results = data.Search;
 
-        setState(prevState => {
-          return{...prevState, results: results}
+        setState((prevState) => {
+          return { ...prevState, results: results };
         });
       });
-    };
+    }
   };
 
   //Function to handel the input in the search box
   const handleInput = (e) => {
-    let s = e.target.value
+    let s = e.target.value;
 
-    setState(prevState => {
-      return {...prevState, s: s}
+    setState((prevState) => {
+      return { ...prevState, s: s };
     });
   };
 
-//Function for the movie when it is clicked to get more info for that specific movie
-const onOpenMovie = id => {
-  axios(apiurl + '&i=' + id).then(({ data }) => {
-    let result = data;
+  //Function for the movie when it is clicked to get more info for that specific movie
+  const onOpenMovie = (id) => {
+    axios(apiurl + "&i=" + id).then(({ data }) => {
+      let result = data;
 
-    setState(prevState => {
-      return { ...prevState, selected: result }
+      setState((prevState) => {
+        return { ...prevState, selected: result };
+      });
     });
-  });
-};
+  };
 
-//Function to close the Movie page info and to get back to the home page
-const onCloseMovie = () => {
-  setState(prevState => {
-    return { ...prevState, selected: {} }
-  });
-};
+  //Function to close the Movie page info and to get back to the home page
+  const onCloseMovie = () => {
+    setState((prevState) => {
+      return { ...prevState, selected: {} };
+    });
+  };
 
   return (
     <div className="App">
@@ -68,14 +68,15 @@ const onCloseMovie = () => {
         <h1>Find your Movie</h1>
       </header>
       <main>
-        <Search 
-          handleInput={handleInput}
-          search={search} 
-        />
+        <Search handleInput={handleInput} search={search} />
 
         <Results results={state.results} onOpenMovie={onOpenMovie} />
 
-        {(typeof state.selected.Title != "undefined") ? <InfoMovie selected={state.selected} onCloseMovie={onCloseMovie} /> : false}
+        {typeof state.selected.Title != "undefined" ? (
+          <InfoMovie selected={state.selected} onCloseMovie={onCloseMovie} />
+        ) : (
+          false
+        )}
       </main>
     </div>
   );
